@@ -1,0 +1,104 @@
+<div class="page">
+  <div class="container">
+    <header class="hdr">
+      <a class="brand" href="#inicio">Juan Camilo Ramírez</a>
+      <nav class="links" aria-label="Principal">
+        <a href="#proyectos">{{ t().navProjects }}</a>
+        <a href="#tecnologias">{{ t().navStack }}</a>
+        <a href="#contacto">{{ t().navContact }}</a>
+      </nav>
+      <div class="tog" role="group" aria-label="Idioma / Language">
+        <button type="button" [attr.aria-pressed]="lang() === 'es'" aria-label="Español" lang="es" (click)="setLang('es')">ES</button>
+        <button type="button" [attr.aria-pressed]="lang() === 'en'" aria-label="English" lang="en" (click)="setLang('en')">EN</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="label eyebrow">{{ t().eyebrow }}</div>
+        <h1>{{ t().headline }}</h1>
+        <p class="sub">{{ t().sub }}</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#proyectos">{{ t().ctaProjects }}</a>
+          <a class="btn btn-secondary" href="#contacto">{{ t().ctaContact }}</a>
+        </div>
+      </section>
+
+      <section id="perfil" class="section about" aria-labelledby="perfil-title">
+        <div class="about-head">
+          <div class="label">{{ t().aboutLabel }}</div>
+          <h2 id="perfil-title">{{ t().aboutTitle }}</h2>
+        </div>
+        <p class="about-text">{{ t().about }}</p>
+      </section>
+
+      <section id="proyectos" class="section" aria-labelledby="proyectos-title">
+        <div class="label">{{ t().projectsLabel }}</div>
+        <h2 id="proyectos-title" class="h2-spaced">{{ t().projectsTitle }}</h2>
+        <div class="cards">
+          @for (p of t().projects; track p.title) {
+            <article class="card">
+              <div class="card-head">
+                <h3>{{ p.title }}</h3>
+                <span class="pill">{{ p.status }}</span>
+              </div>
+              <p class="card-desc">{{ p.desc }}</p>
+              <ul class="tags">
+                @for (tag of p.tags; track tag) {
+                  <li class="tag">{{ tag }}</li>
+                }
+              </ul>
+              @if (p.demoUrl || p.codeUrl) {
+                <div class="card-links">
+                  @if (p.demoUrl) {
+                    <a [href]="p.demoUrl" target="_blank" rel="noopener noreferrer">{{ t().demoLabel }} →</a>
+                  }
+                  @if (p.codeUrl) {
+                    <a [href]="p.codeUrl" target="_blank" rel="noopener noreferrer">{{ t().codeLabel }} →</a>
+                  }
+                </div>
+              }
+            </article>
+          }
+        </div>
+      </section>
+
+      <section id="tecnologias" class="section" aria-labelledby="tecnologias-title">
+        <div class="label">{{ t().stackLabel }}</div>
+        <h2 id="tecnologias-title" class="h2-spaced">{{ t().stackTitle }}</h2>
+        <div class="stack">
+          @for (g of t().stack; track g.title) {
+            <div class="stack-col">
+              <h3>{{ g.title }}</h3>
+              <ul class="chips">
+                @for (item of g.items; track item) {
+                  <li class="chip">{{ item }}</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </section>
+
+      <section id="contacto" class="section section-last" aria-labelledby="contacto-title">
+        <div class="contact">
+          <div class="contact-info">
+            <div class="label">{{ t().contactLabel }}</div>
+            <h2 id="contacto-title">{{ t().contactTitle }}</h2>
+            <p>{{ t().contactText }}</p>
+          </div>
+          <div class="contact-links">
+            @for (c of t().contacts; track c.href) {
+              <a [href]="c.href">
+                <span class="c-label">{{ c.label }}</span>
+                <span class="c-value">{{ c.value }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>{{ t().footer }}</footer>
+  </div>
+</div>
