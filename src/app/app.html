@@ -89,7 +89,7 @@
           </div>
           <div class="contact-links">
             @for (c of t().contacts; track c.href) {
-              <a [href]="c.href">
+              <a [href]="c.href" [attr.target]="c.external ? '_blank' : null" [attr.rel]="c.external ? 'noopener noreferrer' : null">
                 <span class="c-label">{{ c.label }}</span>
                 <span class="c-value">{{ c.value }}</span>
               </a>
