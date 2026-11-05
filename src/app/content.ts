@@ -18,9 +18,11 @@ export interface ContactLink {
   label: string;
   value: string;
   href: string;
+  external?: boolean;
 }
 
 export interface Content {
+  navLabel: string;
   navProjects: string;
   navStack: string;
   navContact: string;
@@ -54,6 +56,7 @@ const GITHUB = 'https://github.com/juancamilorc';
 
 export const CONTENT: Record<Lang, Content> = {
   es: {
+    navLabel: 'Principal',
     navProjects: 'Proyectos',
     navStack: 'Tecnologías',
     navContact: 'Contacto',
@@ -98,12 +101,13 @@ export const CONTENT: Record<Lang, Content> = {
     contactText: 'Abierto a conversar sobre oportunidades en desarrollo backend y fullstack.',
     contacts: [
       { label: 'Correo', value: EMAIL, href: `mailto:${EMAIL}` },
-      { label: 'LinkedIn', value: 'in/crcamiloramirez', href: LINKEDIN },
-      { label: 'GitHub', value: 'github.com/juancamilorc', href: GITHUB },
+      { label: 'LinkedIn', value: 'in/crcamiloramirez', href: LINKEDIN, external: true },
+      { label: 'GitHub', value: 'github.com/juancamilorc', href: GITHUB, external: true },
     ],
     footer: '© 2026 Juan Camilo Ramírez Cardona',
   },
   en: {
+    navLabel: 'Main',
     navProjects: 'Projects',
     navStack: 'Stack',
     navContact: 'Contact',
@@ -148,8 +152,8 @@ export const CONTENT: Record<Lang, Content> = {
     contactText: 'Open to discussing backend and full-stack development opportunities.',
     contacts: [
       { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
-      { label: 'LinkedIn', value: 'in/crcamiloramirez', href: LINKEDIN },
-      { label: 'GitHub', value: 'github.com/juancamilorc', href: GITHUB },
+      { label: 'LinkedIn', value: 'in/crcamiloramirez', href: LINKEDIN, external: true },
+      { label: 'GitHub', value: 'github.com/juancamilorc', href: GITHUB, external: true },
     ],
     footer: '© 2026 Juan Camilo Ramírez Cardona',
   },

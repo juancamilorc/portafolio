@@ -2,7 +2,7 @@
   <div class="container">
     <header class="hdr">
       <a class="brand" href="#inicio">Juan Camilo Ramírez</a>
-      <nav class="links" aria-label="Principal">
+      <nav class="links" [attr.aria-label]="t().navLabel">
         <a href="#proyectos">{{ t().navProjects }}</a>
         <a href="#tecnologias">{{ t().navStack }}</a>
         <a href="#contacto">{{ t().navContact }}</a>
